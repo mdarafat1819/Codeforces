@@ -8,15 +8,12 @@ void letterRepresentation(int col, int row)
     string result;
     while(col)
     {
-        int rem;
         if(!(col % 26))
         {
-            rem = 26;
+            result.push_back('Z');
             col--;
         }
-        else rem = col % 26;
-        char ch = rem + 64;
-        result.push_back(ch);
+        else result.push_back(col % 26 + 64);
         col /= 26;
     }
     reverse(result.begin(), result.end());
@@ -26,7 +23,6 @@ int main()
 {
     int t;
     cin>>t;
-    cin.ignore();
     while(t--)
     {
         string coordinate;
