@@ -9,51 +9,32 @@ int main()
     cin>>t;
     while(t--)
     {
-        int res = 0;
-        vector <int> food;
+        int res = 0, food[3], idx = 0;
         for(int i = 0; i < 3; i++)
         {
-            int value;
-            cin>>value;
-            if(value)
-            food.push_back(value);
+            cin>>food[idx];
+            if(food[idx]) idx++;
         }
-        if(food.size() == 0) cout<<"0"<<endl;
-        else if(food.size() == 1) cout<<"1"<<endl;
-        else if(food.size() == 2)
+        if(idx == 0) res = 0;
+        else if(idx == 1)res = 1;
+        else if(idx == 2)
         {
-            if(food[0] > 1 && food[1] > 1) cout<<"3"<<endl;
-            else cout<<"2"<<endl;
+            if(food[0] > 1 && food[1] > 1) res = 3;
+            else res = 2;
         }
         else
         {
-            res = 3;
-            food[0]--;
-            food[1]--;
-            food[2]--;
-            sort(food.begin(), food.end());
-            reverse(food.begin(), food.end());
+            res = 3, food[0]--, food[1]--, food[2]--;
+            sort(food, food + 3, greater<int>());
             if(food[0] * food[1])
-            {
-                res++;
-                food[0]--;
-                food[1]--;
-            }
+                res++, food[0]--, food[1]--;
             if(food[0] * food[2])
-            {
-                res++;
-                food[0]--;
-                food[2]--;
-            }
+                res++, food[0]--, food[2]--;
             if(food[1] * food[2])
-            {
-                res++;
-                food[1]--;
-                food[2]--;
-            }
+                res++, food[1]--, food[2]--;
             if(food[0] && food[1] && food[2]) res++;
-             cout<<res<<endl;
         }
+        cout<<res<<endl;
     }
 
     return 0;
