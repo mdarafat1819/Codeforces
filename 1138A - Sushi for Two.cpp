@@ -8,15 +8,14 @@ int main()
     int n, res = 0, one = 0, two = 0;
     cin>>n;
     vector <int> pos;
-    int ara[n + 1];
-    ara[n] = 0;
+    int ara[n];
     for(int i = 0; i < n; i++) cin>>ara[i];
     for(int i = 0; i < n; i++)
     {
         if(ara[i] == 1)
         {
             one++;
-            if(ara[i + 1] == 2 || ara[i + 1] == 0)
+            if(ara[i + 1] == 2 || (i == (n - 1)))
             {
                 pos.push_back(one);
                 one = 0;
@@ -25,7 +24,7 @@ int main()
         else
         {
             two++;
-            if(ara[i + 1] == 1 || ara[i + 1] == 0)
+            if(ara[i + 1] == 1 || (i == (n - 1)))
             {
                 pos.push_back(two);
                 two = 0;
