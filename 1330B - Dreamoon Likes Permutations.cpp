@@ -37,11 +37,8 @@ int main()
             }
         }
         cout<<l.size()<<endl;
-        if(l.size())
-        {
-            for(int i = 0; i < l.size(); i++)
-                cout<<l[i]<<" "<<r[i]<<endl;
-        }
+        for(int i = 0; i < l.size(); i++)
+            cout<<l[i]<<" "<<r[i]<<endl;
     }
     return 0;
 }
